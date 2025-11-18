@@ -27,7 +27,11 @@ int main(int argc, char* argv[]) {
     }
 
     int** matrix = (int**)malloc(N * sizeof(int*));
-
+    if (matrix == NULL) {
+        printf("Error: Could not allocate memory for matrix\n");
+        fclose(file);
+        return 1;
+    }
     for (int i = 0; i < N; i++) {
         matrix[i] = (int*)malloc(M * sizeof(int));
         if (matrix[i] == NULL) {
